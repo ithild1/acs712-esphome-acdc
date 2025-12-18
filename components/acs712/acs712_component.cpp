@@ -5,7 +5,7 @@ namespace acs712 {
 
 void ACS712Sensor::setup() {
   // acs_.autoMidPoint();
-  acs_.autoMidPointDC(100);
+  acs_.autoMidPointDC(1000);
   ESP_LOGD("acs712", "MidPoint: %d", acs_.getMidPoint());
 }
 
@@ -13,7 +13,7 @@ void ACS712Sensor::update() {
   float average = 0;
   int count = 5;
   for (int i = 0; i < count; i++) {
-    average += acs_.mA_DC();
+    average += acs_.mA_DC(100);
     // average += acs_.mA_AC();
   }
   float amps = fabs(average / count / 1000.0);
