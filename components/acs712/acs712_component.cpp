@@ -4,7 +4,8 @@ namespace esphome {
 namespace acs712 {
 
 void ACS712Sensor::setup() {
-  acs_.autoMidPoint();
+  // acs_.autoMidPoint();
+  acs_autoMidPointDC(100);
   ESP_LOGD("acs712", "MidPoint: %d", acs_.getMidPoint());
 }
 
