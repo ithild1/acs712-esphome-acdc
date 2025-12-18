@@ -16,7 +16,7 @@ void ACS712Sensor::update() {
     average += acs_.mA_DC();
     // average += acs_.mA_AC();
   }
-  float amps = average / count / 1000.0;
+  float amps = fabs(average / count / 1000.0);
   current_sensor->publish_state(amps);
   power_sensor->publish_state(amps * line_voltage_);
 }
