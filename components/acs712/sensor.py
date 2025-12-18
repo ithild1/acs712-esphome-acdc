@@ -10,7 +10,7 @@ from esphome.const import (
 cg.add_library(
     name="ACS712",
     repository="https://github.com/RobTillaart/ACS712.git",
-    version=">=0.3.0"
+    version=">=0.3.10"
 )
 
 DEPENDENCIES = []
@@ -69,12 +69,12 @@ async def to_code(config):
         cg.add(var.set_noisemV(config[CONF_NOISE_MV]))
     if CONF_MID_POINT in config:
         cg.add(var.set_mid_point(config[CONF_MID_POINT]))
-    
+
     # Registra el sensor de corriente (amperes) si se ha definido en el YAML
     if CONF_CURRENT_SENSOR in config:
         current_sensor = await sensor.new_sensor(config[CONF_CURRENT_SENSOR])
         cg.add(var.set_current_sensor(current_sensor))
-    
+
     # Registra el sensor de potencia (watts) si se ha definido en el YAML
     if CONF_POWER_SENSOR in config:
         power_sensor = await sensor.new_sensor(config[CONF_POWER_SENSOR])
