@@ -5,7 +5,7 @@ namespace acs712 {
 
 void ACS712Sensor::setup() {
   // acs_.autoMidPoint();
-  // acs_.autoMidPointDC(100);
+  acs_.autoMidPointDC(100);
   ESP_LOGD("acs712", "MidPoint: %d", acs_.getMidPoint());
 }
 
